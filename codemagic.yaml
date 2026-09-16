@@ -1,0 +1,18 @@
+workflows:
+  flutter-workflow:
+    name: Net Check Workflow
+    max_build_duration: 30
+    environment:
+      flutter: stable
+    scripts:
+      - name: Initialize Flutter Project
+        script: |
+          flutter create . --org com.deiaa.netcheck --project-name net_check
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build Flutter APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/**/outputs/**/*.apk
