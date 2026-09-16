@@ -1,0 +1,16 @@
+workflows:
+  flutter-workflow:
+    name: Net Check Workflow
+    max_build_duration: 30
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build Flutter App
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/**/outputs/**/*.apk
